@@ -1,4 +1,7 @@
+<?php
+include '../function/function.php';
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   </head>
-  <body>
+<body>
    <div class="container">
        <div class="col-lg-12">
            <br><br><h1 class="text-warning text-center"> Display Table Data   <button class="btn btn-success"><a href="insert.php"class="text-white">Insert</a></button></h1><br>
@@ -24,10 +27,8 @@
                     <td>Update</td>
                 </tr>
                 <?php
-                            include 'connection/conn.php';
-                            $q="SELECT * FROM crudtable";
-                            $query=mysqli_query($con,$q);
-                            while($res=mysqli_fetch_array($query)){
+                $query = fetchData($con);
+                while ($res = mysqli_fetch_assoc($query)) {
                 ?>
                 <tr class="text-center">
                     <td><?php echo $res['id']; ?></td>
@@ -42,24 +43,14 @@
                    <td><button class="btn btn-primary"><a href="update.php?id=<?php echo $res['id']; ?>"class="text-white">Update</a></button></td>
 
                 </tr>
-
                 <?php
-                            }
+                }
                 ?>
-
-
             </table>
        </div>
    </div>
-   <!-- java script -->
-   <script>
-    function confirmDelete(id) {
-        var result = confirm("Are you sure you want to delete this record?");
-        if (result) {
-            window.location.href = "delete.php?id=" + id;
-        }
-    }
-</script>
-
+   <!-- JavaScript -->
+   <script src="../assets/script.js"></script>
 </body>
 </html>
+

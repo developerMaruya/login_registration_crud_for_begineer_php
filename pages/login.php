@@ -1,5 +1,8 @@
 <?php
-include 'query/query.php';
+include '../function/function.php';
+include '../connection/conn.php';
+loginData($con);
+
 ?>
 
 <!DOCTYPE html>

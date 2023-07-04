@@ -1,5 +1,12 @@
 <?php
-include 'query/query.php';
+
+
+include '../function/function.php';
+include '../connection/conn.php';
+
+insertData($con);
+
+
 ?>
 
 

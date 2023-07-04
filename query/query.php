@@ -1,28 +1,28 @@
 <?php
-include 'connection/conn.php';
-// loging
-if(isset($_POST['done'])){
-    $username=$_POST['username'];
-    $password=$_POST['password'];
-    $logingQuery="SELECT * FROM crudtable";
-    $query=mysqli_query($con,$logingQuery);
-    while($res=mysqli_fetch_array($query)){
-        if ($username==$res['username'] && ($password==$res['password'])){
-            header('location:display.php');
-            break;
-        }else{
-            header('location:login.php');
-        }
-    }
-
-
+function loginQuery($con, $username, $password) {
+    $loginQuery = "SELECT * FROM crudtable WHERE username = '$username' AND password = '$password'";
+    $query = mysqli_query($con, $loginQuery);
+    return $query;
 }
-// inset data 
-if(isset($_POST['done1'])){
-    $username=$_POST['username'];
-    $password=$_POST['password'];
-    $insertQuery="INSERT INTO `crudtable`(`username`, `password`) VALUES ('$username','$password')";
-    $query=mysqli_query($con,$insertQuery);
-    header('location:display.php');
+function insertQuery($con, $username, $password) {
+    $insertQuery = "INSERT INTO `crudtable`(`username`, `password`) VALUES ('$username','$password')";
+    $query = mysqli_query($con, $insertQuery);
+    return $query;
+}
+function deleteQuery($con,$id){
+    $q="DELETE FROM crudtable WHERE id=$id";
+    $query=mysqli_query($con,$q);
+    return $query;
+}
+function updateQuery($con, $username, $password,$id){
+    $updateQuery = "UPDATE crudtable SET username='$username', password='$password' WHERE id=$id";
+    $query = mysqli_query($con, $updateQuery);
+    return $query;
+}
+function DisplayUpdateQuery($con){
+    $id = $_GET['id'];
+    $selectQuery = "SELECT * FROM crudtable WHERE id=$id";
+    $result = mysqli_query($con, $selectQuery);
+    return $result;
 }
 ?>

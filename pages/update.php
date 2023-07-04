@@ -1,21 +1,10 @@
 <?php
-include 'connection/conn.php';
+include '../function/function.php';
+include '../connection/conn.php';
+updateData($con);
+// Retrieve existing values from the database;
 
-if (isset($_POST['done'])) {
-    $id = $_GET['id'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $updateQuery = "UPDATE crudtable SET username='$username', password='$password' WHERE id=$id";
-    $query = mysqli_query($con, $updateQuery);
-
-    header('location: display.php');
-}
-
-// Retrieve existing values from the database
-$id = $_GET['id'];
-$selectQuery = "SELECT * FROM crudtable WHERE id=$id";
-$result = mysqli_query($con, $selectQuery);
+$result = DisplayUpdateQuery($con);
 $row = mysqli_fetch_array($result);
 ?>
 
