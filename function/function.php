@@ -5,11 +5,13 @@ include '../query/query.php';
 // login 
 
 function loginData($con) {
+    session_start();
     if (isset($_POST['done'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $query = loginQuery($con, $username, $password);
         if (mysqli_num_rows($query) > 0) {
+            $_SESSION['username']=$username;
             header('Location: display.php');
         }
     }

@@ -1,6 +1,10 @@
 <?php
+session_start();
 include '../function/function.php';
-
+echo "session is ".$_SESSION['username'];
+if(!isset($_SESSION['username'])){
+    header('location:login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +51,7 @@ include '../function/function.php';
                 }
                 ?>
             </table>
+            <button class="btn btn-danger"><a href="logout.php"class="text-white">Logout</a></button>
        </div>
    </div>
    <!-- JavaScript -->
