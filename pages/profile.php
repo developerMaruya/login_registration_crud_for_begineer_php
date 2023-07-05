@@ -20,21 +20,34 @@ session_start();
 <body>
     <div class="container">
         <div class="col-lg-6 m-auto">
-            <br><br><div class="card" style="border-width:0">
+            <br><br><div class="card">
                 <div class="card-header bg-dark">
                     <h1 class="text-center text-white">User Profile</h1>
                 </div>
-
-                <table class="table table-striped table-hover table-bordered">
-           
-                    <?php
+                <?php
                         include '../connection/conn.php';
                         $emailData=$_SESSION['email'];
                         $query="SELECT * FROM registration WHERE email='$emailData'";
                         $data=mysqli_query($con,$query);
                         $rowData=mysqli_fetch_assoc($data);
                         while($rowData){
+                            $image_path=$rowData['image']; 
                     ?>
+
+
+                <div class="d-flex">
+                <div class="col-lg-6 bg-info">
+                <?php                
+                    echo "<div class='image-container' style='display: flex; justify-content: center; align-items: center; margin: 10px; padding: 60px;'>
+                        <img src='$image_path' alt='Profile Image' style='width: 100px; height: 100px;'>
+                    </div>";                                     
+                    ?>
+                </div>
+            <div class="col-lg-6 ">
+                <table class="table table-striped table-hover table-bordered">
+           
+                    
+                        
                         <tr class="text-center">
                             <td><?php echo "User Id : ".$rowData['id']; ?></td> 
                         </tr>
@@ -64,6 +77,9 @@ session_start();
                         }
                     ?>
             </table> 
+                    </div>
+
+                </div>
                     
             </div>
                 <div class="text-center mt-5">

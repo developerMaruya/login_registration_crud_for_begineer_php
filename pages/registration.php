@@ -21,7 +21,7 @@ registerData($con);
 <body>
     <div class="container">
         <div class="col-lg-6 m-auto"><br><br>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div class="card" style="border-width : 0">
                     <div class="card-header bg-dark ">
                         <h1 class="text-white text-center">Registration Form</h1>

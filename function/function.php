@@ -38,8 +38,13 @@ function registerData($con){
         $password = $_POST['password'];
         $state = $_POST['state'];
         $pin = $_POST['pin'];
-        $img=$_POST['img'];
-        $query=registerQuery($con,$username,$age,$email,$address,$mobile,$password,$state,$pin,$img);
+        // store file in froject
+        $filename = $_FILES["img"]["name"];
+        $tempname = $_FILES["img"]["tmp_name"];
+        $images = "images/" . $filename;
+        move_uploaded_file($tempname, $images);
+        $_SESSION['email']=$email;
+        $query=registerQuery($con,$username,$age,$email,$address,$mobile,$password,$state,$pin,$images);
         header('location:./display.php');
     }
 }
