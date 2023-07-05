@@ -1,12 +1,17 @@
 <?php
-function loginQuery($con, $username, $password) {
-    $loginQuery = "SELECT * FROM crudtable WHERE username = '$username' AND password = '$password'";
+function loginQuery($con, $email, $password) {
+    $loginQuery = "SELECT * FROM registration WHERE email = '$email' AND password = '$password'";
     $query = mysqli_query($con, $loginQuery);
     return $query;
 }
 function insertQuery($con, $username, $password) {
     $insertQuery = "INSERT INTO `crudtable`(`username`, `password`) VALUES ('$username','$password')";
     $query = mysqli_query($con, $insertQuery);
+    return $query;
+}
+function registerQuery($con,$username,$age,$email,$address,$mobile,$password,$state,$pin,$img){
+    $registerQuery="INSERT INTO `registration`(`username`,`age`,`email`,`address`,`mobile`,`password`,`state`,`pin`,`image`) VALUES ('$username',$age,'$email','$address',$mobile,'$password','$state',$pin,'$img')";
+    $query=mysqli_query($con,$registerQuery);
     return $query;
 }
 function deleteQuery($con,$id){

@@ -1,8 +1,7 @@
 <?php
 session_start();
 include '../function/function.php';
-echo "session is ".$_SESSION['username'];
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['email'])){
     header('location:login.php');
 }
 ?>
@@ -21,7 +20,7 @@ if(!isset($_SESSION['username'])){
 <body>
    <div class="container">
        <div class="col-lg-12">
-           <br><br><h1 class="text-warning text-center"> Display Table Data   <button class="btn btn-success"><a href="insert.php"class="text-white">Insert</a></button></h1><br>
+           <br><br><h1 class="text-warning text-center"> Display Table Data   <button class="btn btn-danger"><a href="logout.php"class="text-white">Logout</a></button></h1><br>
            <table class="table table-striped table-hover table-bordered">
                 <tr class="bg-dark table-dark text-center">
                     <td>Id</td>
@@ -51,7 +50,10 @@ if(!isset($_SESSION['username'])){
                 }
                 ?>
             </table>
-            <button class="btn btn-danger"><a href="logout.php"class="text-white">Logout</a></button>
+            <div class="text-center mt-4">
+                <button class="btn btn-success"><a href="insert.php"class="text-white">Insert</a></button>
+                <button class="btn btn-primary"><a href="profile.php"class="text-white">Profile</a></button>
+            </div>
        </div>
    </div>
    <!-- JavaScript -->

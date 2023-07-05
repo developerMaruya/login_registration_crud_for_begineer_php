@@ -7,11 +7,11 @@ include '../query/query.php';
 function loginData($con) {
     session_start();
     if (isset($_POST['done'])) {
-        $username = $_POST['username'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
-        $query = loginQuery($con, $username, $password);
+        $query = loginQuery($con, $email, $password);
         if (mysqli_num_rows($query) > 0) {
-            $_SESSION['username']=$username;
+            $_SESSION['email']=$email;
             header('Location: display.php');
         }
     }
@@ -23,6 +23,23 @@ function insertData($con) {
         $username = $_POST['username'];
         $password = $_POST['password'];
         $query = insertQuery($con, $username, $password);
+        header('location:./display.php');
+    }
+}
+// register data
+function registerData($con){
+    session_start();
+    if(isset($_POST['registerDone'])){
+        $username = $_POST['username'];
+        $age = $_POST['age'];
+        $email=$_POST['email'];
+        $address = $_POST['address'];
+        $mobile = $_POST['mobile'];
+        $password = $_POST['password'];
+        $state = $_POST['state'];
+        $pin = $_POST['pin'];
+        $img=$_POST['img'];
+        $query=registerQuery($con,$username,$age,$email,$address,$mobile,$password,$state,$pin,$img);
         header('location:./display.php');
     }
 }

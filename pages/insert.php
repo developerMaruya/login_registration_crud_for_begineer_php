@@ -34,7 +34,7 @@ insertData($con);
                 <label>Password:</label>
                 <input type="password" name="password" class="form-control" placeholder="Enter Password" required><br>
                 <button class="btn btn-success" type="submit" name="done1">submit</button><br>
-                <a href="login.php" class="text-center">GoTo Loging Page</a>
+                <a href="display.php" class="text-center">GoTo Home Page</a>
             </div>
 
 </form>

@@ -23,12 +23,12 @@ loginData($con);
                 <div class="card-header bg-dark">
                     <h1 class="text-white text-center"> Login</h1>
                 </div>
-                <label>Username:</label>
-                <input type="text" name="username" class="form-control" placeholder="Enter Username" required><br>
+                <label>Email:</label>
+                <input type="text" name="email" class="form-control" placeholder="Enter Email" required><br>
                 <label>Password:</label>
                 <input type="password" name="password" class="form-control" placeholder="Enter Password" required><br>
                 <button class="btn btn-success" type="submit" name="done">Login</button><br>
-                <a href="insert.php" class="text-center">Register Here</a>
+                <a href="registration.php" class="text-center">Register Here</a>
             </div>
 
 </form>
